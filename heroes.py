@@ -1,20 +1,60 @@
 #!/usr/bin/python3
 """"""
-from kamikase import Kamikase
+class Base():
+    EXP_N_L = 10
+    C_EXP = 0
+    T_EXP = 0
+    Level = 0
+    nb_object = 0
 
+    def __init__(self, id=None):
+        if id is not None:
+            self.id = id
+        else:
+            Base.nb_object += 1
+            self.id = Base.nb_object
+        self.C_EXP = Base.C_EXP
+        self.T_EXP = Base.T_EXP
+        self.Level = Base.Level
+        self.EXP_N_L = Base.EXP_N_L
 
-class Heroes(Kamikase):
+    @property
+    def name(self):
+        return self.__name
 
-    def __init__(self, name, race, gender, level, exp_n_l, c_exp, t_exp, id=None):
-        self.Name = name
-        self.Race = race
-        self.Gender = gender
-        self.Level = level
-        self.EXP_N_L = exp_n_l
-        self.C_EXP = c_exp
-        self.T_EXP = t_exp
-        super().__init__(id)
+    @name.setter
+    def name(self, value):
+        self.validator('name', value)
+        self.__name = value
+
+    @property
+    def race(self):
+        return self.__race
+
+    @race.setter
+    def race(self, value):
+        self.validator('race', int(value))
+        race_list = ["Human", "Elf", "Dwarf", "Hobbit", "Orc"]
+        self.__race = str(race_list[int(value) - 1])
+
+    @property
+    def gender(self):
+        return self.__gender
+
+    @gender.setter
+    def gender(self, value):
+        self.validator('gender', int(value))
+        gender_list = ["Male", "Female", "Other"]
+        self.__gender = str(gender_list[int(value) - 1])
+
+    def validator(self, name, value):
+        if name is 'name' and len(value) > 10:
+            raise Exception("Name is too long, only 10 characters allowed")
+        if name is 'race' and (1 > value > 5):
+            raise Exception("No race was chosen")
+        if name is 'gender' and (1 > value > 3):
+            raise Exception("No gender was chosen")
 
     def __str__(self):
-        str = "Name: {}\n Race: {}\n Gender: {}\n Level: {}\n EXP for Next Level: {}\n Current EXP: {}\n Total EXP: {}\n"
-        return (str.format(self.Name, self.Race, self.Gender, self.Level, self.EXP_N_L, self.C_EXP, self.T_EXP))
+        str = "Name: {}\nRace: {}\nGender: {}\nLevel: {}\nEXP for Next Level: {}\nCurrent EXP: {}\nTotal EXP:{}\nChampion id: {}\n"
+        return (str.format(self.name, self.race, self.gender, self.Level, self.EXP_N_L, self.C_EXP, self.T_EXP, self.id))
