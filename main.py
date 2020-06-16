@@ -4,6 +4,7 @@
 from fighter import Fighter
 from mage import Mage
 from rogue import Rogue
+from champ import Champ
 
 if __name__ == '__main__':
   name = input("Enter the name of the Champion (Less that 10 characters): ")
@@ -27,4 +28,12 @@ if __name__ == '__main__':
     func = Rogue
 
   h1 = func(name, race, gender)
+  print(h1, end="\n")
+  h1.level_up()
+  print(h1, end="\n")
+  h1.update(health=1, attack=1, defence=1)
   print(h1)
+  h1.level_up()
+  print(h1, end="\n")
+  h1.update(speed=1, dmg_reduction=1, attack=1)
+  print(h1, end="\n")

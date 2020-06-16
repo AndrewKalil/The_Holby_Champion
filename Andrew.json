@@ -1,0 +1,20 @@
+{
+    "champ_class": "Fighter",
+    "name": "Andrew",
+    "race": "Human",
+    "gender": "Male",
+    "health": 100,
+    "attack": 35,
+    "defence": 50,
+    "magic": 0,
+    "weapon": "sword and shield",
+    "armor": "heavy",
+    "speed": 3,
+    "dmg_reduction": 6,
+    "Level": 1,
+    "EXP_N_L": 10,
+    "C_EXP": 0,
+    "T_EXP": 0,
+    "S_Points": 0,
+    "id": 1
+}
