@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """"""
-from fighter import Fighter
+from champ import Champ
 import random
 
-class Mage(Fighter):
+class Mage(Champ):
 
     def __init__(
         self, name, race, gender, element=None, id=None, weapon="staff", armor="medium", champ_class="Mage",
@@ -15,14 +15,7 @@ class Mage(Fighter):
         self.energy -= 45
         if self.energy <= 0:
             self.energy = 0
-        if self.element is "Solar" and enemy is "Arc":
-            value = Total_dmg + (Total_dmg * .25)
-        elif self.element is "Arc" and enemy is "Void":
-            value = Total_dmg + (Total_dmg * .25)
-        elif self.element is "Void" and enemy is "Solar":
-            value = Total_dmg + (Total_dmg * .25)
-        else:
-            value = Total_dmg
+        value = Total_dmg
         self.T_dmg += value
         return value
 
@@ -33,14 +26,7 @@ class Mage(Fighter):
             self.energy -= 45
             if self.energy <= 0:
                 self.energy = 0
-            if self.element is "Solar" and enemy is "Arc":
-                value = Total_dmg + (Total_dmg * .25)
-            elif self.element is "Arc" and enemy is "Void":
-                value = Total_dmg + (Total_dmg * .25)
-            elif self.element is "Void" and enemy is "Solar":
-                value = Total_dmg + (Total_dmg * .25)
-            else:
-                value = Total_dmg
+            value = Total_dmg
             self.T_dmg += value
             return value
 
@@ -52,14 +38,7 @@ class Mage(Fighter):
             self.energy -= 75
             if self.energy <= 0:
                 self.energy = 0
-            if self.element is "Solar" and enemy is "Arc":
-                value = Total_dmg + (Total_dmg * .25)
-            elif self.element is "Arc" and enemy is "Void":
-                value = Total_dmg + (Total_dmg * .25)
-            elif self.element is "Void" and enemy is "Solar":
-                value = Total_dmg + (Total_dmg * .25)
-            else:
-                value = Total_dmg
+            value = Total_dmg
             self.T_dmg += value
             return value
 
@@ -69,13 +48,6 @@ class Mage(Fighter):
             self.energy -= 100
             if self.energy <= 0:
                 self.energy = 0
-            if self.element is "Solar" and enemy is "Arc":
-                value = Total_dmg + (Total_dmg * .25)
-            elif self.element is "Arc" and enemy is "Void":
-                value = Total_dmg + (Total_dmg * .25)
-            elif self.element is "Void" and enemy is "Solar":
-                value = Total_dmg + (Total_dmg * .25)
-            else:
-                value = Total_dmg
+            value = Total_dmg
             self.T_dmg += value
             return value

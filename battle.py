@@ -1,52 +1,51 @@
 #!/usr/bin/python3
+""""""
+from time import sleep
+import pygame
 
-from champ import Champ
+def battle(p1, p2):
+    ele1 = p1.element
+    ele2 = p2.element
+    red = "\033[1;31m"
+    blue = "\033[1;34m"
+    reset = "\033[0;0m"
 
+    while True:
+        if p1.health <= 0 or p2.health <= 0:
+            if p1.health > 0:
+                print("{}PLAYER 1 WINS".format(reset))
+                p1.win()
+                p2.lose()
+            elif p2.health > 0:
+                print("{}PLAYER 2 WINS".format(reset))
+                p2.win()
+                p1.lose()
+            break
 
-class Battle():
-    def __init__(self, Heroe_1, Heroe_2):
-        self.Heroe_1 = Heroe_1
-        self.Heroe_2 = Heroe_2
-        self.current_turn = 0
-    
-    def is_finished(self):
-        finished = self.Heroe_1.current_hp <= 0 or self.Heroe_2.current_hp <= 0
-        if finished:
-            self.print_winner()
-        return finished
+        if p1.health > 0:
+            dmg1 = p1.attack_action(ele2)
+            print("{}Player 1 Attacking...".format(reset))
+            print()
+            sleep(3)
+            p2.total_defence(dmg1, ele1)
+            print("{}Player 1 stats after attack:".format(red))
+            print("Name: {}\nHealth: {:.2f}\nEnergy: {:.2f}".format(p1.name, p1.health, p1.energy))
+            print()
+            print("{}Player 2 stats after attack".format(blue))
+            print("Name: {}\nHealth: {:.2f}\nEnergy: {:.2f}".format(p2.name, p2.health, p2.energy))
+            sleep(6)
+            print()
 
-    def print_winner(self):
-        if self.Heroe_1.current_hp <= 0 < self.Heroe_2.current_hp:
-            print(self.Heroe_2.name + "Won in" +str(self.current_turn)+" Turns!!")
-        elif self.Heroe_2.current_hp <= 0 < self.Heroe_1.current_hp:
-            print(self.Heroe_1.name + " won in " + str(self.current_turn)+" turns!!")
-        else:
-            print("DOUBLE KO")
-
-
-    def execute_turn(self, turn):
-        attack1 = None
-        attack2 = None
-        self.Heroe_1.health -= attack1.attack
-        self.Heroe_2.health -= attack2.attack
-        self.current_turn += 1
-
-    def print_current_status(self):
-        print(self.Heroe_1.Name + "has" + str(self.Heroe_1.current_hp) + " left")
-        print(self.Heroe_2.Name + "has" + str(self.Heroe_2.current_hp) + " left")
-
-class Attack(Champ):
-    def __init__(self):
-        super().__init__(id)
-
-class Turn():
-    def __init__(self):
-        self.argv1 = None
-        self.argv2 = None
-
-    def can_start(self): 
-        return self.argv1 is not None and self.argv2 is not None
-
-class Command():
-    def __init__(self, action):
-        self.action = action
+        if p2.health > 0:
+            dmg2 = p2.attack_action(ele1)
+            print("{}Player 2 Attacking...".format(reset))
+            print()
+            sleep(3)
+            p1.total_defence(dmg2, ele2)
+            print("{}Player 1 stats after attack:".format(red))
+            print("Name: {}\nHealth: {:.2f}\nEnergy: {:.2f}".format(p1.name, p1.health, p1.energy))
+            print()
+            print("{}Player 2 stats after attack".format(blue))
+            print("Name: {}\nHealth: {:.2f}\nEnergy: {:.2f}".format(p2.name, p2.health, p2.energy))
+            sleep(6)
+            print()

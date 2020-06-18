@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
-import sys, pygame
+import sys, os
 from time import sleep
+import pygame
 from pygame.sprite import Sprite
 from pygame.locals import *
 
@@ -12,29 +13,11 @@ from rogue import Rogue
 from champ import Champ
 from base import Base
 
-
-class Game(Champ):
+class Game(Fighter, Mage, Rogue):
 
     def __init__(self, h_1, h_2):
         self.h_1 = h_1
         self.h_2 = h_2
-
-    @property
-    def h_1(self):
-        return self.__h_1
-
-    @h_1.setter
-    def h_1(self, value):
-        self.__h_1 = value
-
-    @property
-    def h_2(self):
-        return self.__h_2
-
-    @h_2.setter
-    def h_2(self, value):
-        self.__h_2 = value
-
         pygame.init()
         self.white = (255, 255, 255)
         self.black = (0, 0, 0)
@@ -56,15 +39,31 @@ class Game(Champ):
         self.guerrero = pygame.image.load("images/guerrero.png")
         self.mago = pygame.image.load("images/Mago.png")
 
+    @property
+    def h_1(self):
+        return self.__h_1
+
+    @h_1.setter
+    def h_1(self, value):
+        self.__h_1 = value
+
+    @property
+    def h_2(self):
+        return self.__h_2
+
+    @h_2.setter
+    def h_2(self, value):
+        self.__h_2 = value
+
     def message_display(self, text):
         largeText = pygame.font.Font('freesansbold.ttf', 115)
-        TextSurf, TextRect = text_objects(text, largeText)
+        TextSurf, TextRect = self.text_objects(text, largeText)
         TextRect.center = ((self.width/2), (self.height/2))
         self.display_surface.blit(TextSurf, TextRect)
 
         pygame.display.update()
-        time.sleep(2)
-        game_loop()
+        sleep(2)
+        self.game_loop()
 
     def print_screen(self, msg, x, y):
         font = pygame.font.SysFont("comicsansms", 22)
@@ -164,7 +163,7 @@ class Game(Champ):
             if self.h_1.health <= 0 or self.h_2.health <= 0:
                 if self.h_1.health > 0:
                     self.text_screen("Player 1 WINS!!", None, 250, 150)
-                elif h_2.health > 0:
+                elif self.h_2.health > 0:
                     self.text_screen("Player 1 WINS!!", None, 300, 180)
 
             if self.h_1.health > 0:
@@ -184,6 +183,6 @@ print(p2)
 
 h = Game(p1, p2)
 h.game_intro()
-game_loop()
+h.game_loop()
 pygame.quit()
 quit()

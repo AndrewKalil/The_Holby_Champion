@@ -208,14 +208,7 @@ class Champ(Base):
             self.T_dmg_done = (.60*self.attack) + (self.CRIT * self.attack)
         elif self.champ_class in ["Mage"]:
             self.T_dmg_done = (.60*self.magic) + (self.CRIT * self.magic)
-        if self.element is "Solar" and enemy is "Arc":
-            value = self.T_dmg_done + (self.T_dmg_done * .25)
-        elif self.element is "Arc" and enemy is "Void":
-            value = self.T_dmg_done + (self.T_dmg_done * .25)
-        elif self.element is "Void" and enemy is "Solar":
-            value = self.T_dmg_done + (self.T_dmg_done * .25)
-        else:
-            value = self.T_dmg_done
+        value = self.T_dmg_done
         self.T_dmg += value
         self.energy -= 5 + (value * .20)
         if self.energy <= 0:

@@ -14,14 +14,7 @@ class Fighter(Champ):
         self.energy -= 45
         if self.energy <= 0:
             self.energy = 0
-        if self.element is "Solar" and enemy is "Arc":
-            value = Total_dmg + (Total_dmg * .25)
-        elif self.element is "Arc" and enemy is "Void":
-            value = Total_dmg + (Total_dmg * .25)
-        elif self.element is "Void" and enemy is "Solar":
-            value = Total_dmg + (Total_dmg * .25)
-        else:
-            value = Total_dmg
+        value = Total_dmg
         self.T_dmg += value
         return value
 
@@ -32,14 +25,7 @@ class Fighter(Champ):
             self.energy -= 45
             if self.energy <= 0:
                 self.energy = 0
-            if self.element is "Solar" and enemy is "Arc":
-                value = Total_dmg + (Total_dmg * .25)
-            elif self.element is "Arc" and enemy is "Void":
-                value = Total_dmg + (Total_dmg * .25)
-            elif self.element is "Void" and enemy is "Solar":
-                value = Total_dmg + (Total_dmg * .25)
-            else:
-                value = Total_dmg
+            value = Total_dmg
             self.T_dmg += value
             return value
 
@@ -51,14 +37,7 @@ class Fighter(Champ):
             self.energy -= 55
             if self.energy <= 0:
                 self.energy = 0
-            if self.element is "Solar" and enemy is "Arc":
-                value = Total_dmg + (Total_dmg * .25)
-            elif self.element is "Arc" and enemy is "Void":
-                value = Total_dmg + (Total_dmg * .25)
-            elif self.element is "Void" and enemy is "Solar":
-                value = Total_dmg + (Total_dmg * .25)
-            else:
-                value = Total_dmg
+            value = Total_dmg
             self.T_dmg += value
             return value
 
@@ -69,13 +48,6 @@ class Fighter(Champ):
             self.energy -= 100
             if self.energy <= 0:
                 self.energy = 0
-            if self.element is "Solar" and enemy is "Arc":
-                value = Total_dmg + (Total_dmg * .25)
-            elif self.element is "Arc" and enemy is "Void":
-                value = Total_dmg + (Total_dmg * .25)
-            elif self.element is "Void" and enemy is "Solar":
-                value = Total_dmg + (Total_dmg * .25)
-            else:
-                value = Total_dmg
+            value = Total_dmg
             self.T_dmg += value
             return value
